@@ -1,15 +1,17 @@
+import React from 'react';
 import { StyleSheet } from 'react-native';
+import { CurrentUser } from '../components/CurrentUser';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import { useAuthState } from '../context/authContext';
 import { RootTabScreenProps } from '../types';
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
+  const loginState = useAuthState();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/HomeScreen.tsx" />
+      <CurrentUser></CurrentUser>
     </View>
   );
 }
